@@ -1,13 +1,13 @@
 import thingsReducer from './things'
-import { submitLogin, logOut } from '../actions'
+import { setThings, logOut } from '../actions'
 
 describe('things reducer', () => {
     test('has initial state of null', () => {
         expect(thingsReducer(undefined, { type: 'whatever' })).toBeNull()
     })
 
-    test('returns an array with mocked data once a login action arrives', () => {
-        expect(thingsReducer(undefined, submitLogin('user', 'pass'))).toEqual(
+    test('returns the value given by a setThings action', () => {
+        expect(thingsReducer(undefined, setThings(['thing1', 'thing2', 'thing3']))).toEqual(
             ['thing1', 'thing2', 'thing3']
         )
     })
