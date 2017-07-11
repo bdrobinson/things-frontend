@@ -4,12 +4,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getThings } from '../selectors'
+import { logOut as createLogOut } from '../actions'
 
 type Props = {
-    things: Array<string>
+    things: Array<string>,
+    logOut: () => void,
 }
 
-const ThingsPage = ({ things }: Props) => (
+const ThingsPage = ({ things, logOut }: Props) => (
     <section>
         <h1>Things</h1>
         <ul>
@@ -17,6 +19,7 @@ const ThingsPage = ({ things }: Props) => (
                 <li key={thing}>{thing}</li>
             ))}
         </ul>
+        <button onClick={() => logOut()}>Log out</button>
     </section>
 )
 
@@ -24,6 +27,8 @@ const mapStateToProps = state => ({
     things: getThings(state),
 })
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+    logOut: () => dispatch(createLogOut()),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThingsPage)

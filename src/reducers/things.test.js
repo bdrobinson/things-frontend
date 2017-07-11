@@ -1,5 +1,5 @@
 import thingsReducer from './things'
-import { submitLogin } from '../actions'
+import { submitLogin, logOut } from '../actions'
 
 describe('things reducer', () => {
     test('has initial state of null', () => {
@@ -10,5 +10,9 @@ describe('things reducer', () => {
         expect(thingsReducer(undefined, submitLogin('user', 'pass'))).toEqual(
             ['thing1', 'thing2', 'thing3']
         )
+    })
+
+    test('returns null after the logout action arrives', () => {
+        expect(thingsReducer(undefined, logOut())).toBeNull()
     })
 })
