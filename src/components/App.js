@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import LoginPage from './LoginPage'
+
 export default () => (
-    <div>Hello world</div>
+    <LoginPage />
 )
