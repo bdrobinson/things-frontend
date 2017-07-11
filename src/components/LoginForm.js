@@ -1,14 +1,20 @@
 // @flow
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-type Props = {}
+import { submitLogin } from '../actions'
+
+type Props = {
+    login: (username: string, password: string) => void,
+}
 type State = {
     username: string,
     password: string,
 }
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
+    props: Props
     state: State
 
     constructor (props: Props) {
@@ -43,6 +49,7 @@ export default class LoginForm extends Component {
                 </label>
                 <button onClick={e => {
                     e.preventDefault()
+                    this.props.login(this.state.username, this.state.password)
                 }}>
                     Submit
                 </button>
@@ -50,3 +57,11 @@ export default class LoginForm extends Component {
         )
     }
 }
+
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => ({
+    login: (username, password) => dispatch(submitLogin(username, password)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
