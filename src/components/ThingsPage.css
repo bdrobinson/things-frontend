@@ -1,0 +1,17 @@
+.ThingsPage {}
+
+.ThingsPage .ThingsPage__List {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.ThingsPage ul {
+    text-align: left;
+    margin: 0;
+    font-size: .8em;
+}
+
+.ThingsPage li {
+    padding: .2em 0;
+}

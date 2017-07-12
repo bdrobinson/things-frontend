@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { getThings } from '../selectors'
 import { logOut as createLogOut } from '../actions'
+import './ThingsPage.css'
 
 type Props = {
     things: Array<string>,
@@ -12,13 +13,16 @@ type Props = {
 }
 
 const ThingsPage = ({ things, logOut }: Props) => (
-    <section>
+    <section className='ThingsPage'>
         <h1>Things</h1>
-        <ul>
-            {things.map(thing => (
-                <li key={thing}>{thing}</li>
-            ))}
-        </ul>
+        <p>Welcome! Your things are:</p>
+        <div className='ThingsPage__List'>
+            <ul>
+                {things.map(thing => (
+                    <li key={thing}>{thing}</li>
+                ))}
+            </ul>
+        </div>
         <button onClick={() => logOut()}>Log out</button>
     </section>
 )

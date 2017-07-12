@@ -11,6 +11,7 @@ import { createEpicMiddleware } from 'redux-observable'
 import App from './components/App'
 import rootReducer from './reducers'
 import rootEpic from './epics'
+import './index.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(

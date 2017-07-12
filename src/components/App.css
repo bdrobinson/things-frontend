@@ -1,0 +1,25 @@
+.App {
+
+}
+
+.App h1 {
+    font-size: 5em;
+}
+
+.App button {
+    font-size: 1em;
+    padding: 1em;
+    margin: 1em;
+    border: 0;
+    background-color: #eee;
+}
+
+.App button:hover {
+    background-color: #f94a79;
+    color: white;
+    cursor: pointer;
+}
+
+.App label {
+    margin: 3em 0;
+}

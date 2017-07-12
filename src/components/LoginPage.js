@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import LoginForm from './LoginForm'
 import { getHasLoginBegun, getHasLoginFailed } from '../selectors'
+import './LoginPage.css'
 
 import type { State } from '../reducers'
 
@@ -14,7 +15,7 @@ type Props = {
 }
 
 const LoginPage = ({ hasLoginBegun, hasLoginFailed }: Props) => (
-    <section>
+    <section className='LoginPage'>
         <h1>Log in</h1>
         <LoginForm />
         {hasLoginBegun ? <p>Logging in...</p> : null}
