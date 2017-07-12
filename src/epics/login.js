@@ -1,13 +1,18 @@
 // @flow
 
-import type { Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 
-import { setThings } from '../actions'
+import { setThings, requestFailed } from '../actions'
 import { SUBMIT_LOGIN } from '../constants/actionTypes'
+import { fetchThings } from './requests'
 
 const loginEpic = (actions$: Observable<Object>) =>
     actions$
         .filter(action => action.type === SUBMIT_LOGIN)
-        .map(() => setThings(['thing1', 'thing2', 'thing3']))
+        .mergeMap(action => Observable
+            .fromPromise(fetchThings(action.username, action.password))
+            .map(things => setThings(things))
+            .catch(e => Observable.of(requestFailed(e.message)))
+        )
 
 export default loginEpic
