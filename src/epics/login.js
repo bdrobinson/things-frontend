@@ -9,6 +9,7 @@ import { fetchThings } from './requests'
 const loginEpic = (actions$: Observable<Object>) =>
     actions$
         .filter(action => action.type === SUBMIT_LOGIN)
+        .delay(400)
         .mergeMap(action => Observable
             .fromPromise(fetchThings(action.username, action.password))
             .map(things => setThings(things))
