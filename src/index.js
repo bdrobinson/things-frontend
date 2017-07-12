@@ -1,5 +1,6 @@
 // @flow
 
+import 'babel-polyfill'
 import React from 'react'
 import 'rxjs'
 import { render } from 'react-dom'
